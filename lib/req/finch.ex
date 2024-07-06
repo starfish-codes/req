@@ -49,7 +49,9 @@ defmodule Req.Finch do
     finch_options =
       request.options |> Map.take([:receive_timeout, :pool_timeout]) |> Enum.to_list()
 
-    run(request, finch_request, finch_name, finch_options)
+    with %Req.Request{} = request <- Req.SafeURL.validate(request) do
+      run(request, finch_request, finch_name, finch_options)
+    end
   end
 
   defp run(req, finch_req, finch_name, finch_options) do

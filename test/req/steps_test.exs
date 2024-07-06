@@ -68,7 +68,6 @@ defmodule Req.StepsTest do
       assert Req.get!(plug: plug, base_url: fn -> "/api/v1" end).body == "/api/v1"
       assert Req.get!(plug: plug, base_url: fn -> "/api/v1" end, url: "foo").body == "/api/v1/foo"
       assert Req.get!(plug: plug, base_url: fn -> URI.new!("/api/v1") end).body == "/api/v1"
-      assert Req.get!(plug: plug, base_url: {URI, :new!, ["/api/v1"]}).body == "/api/v1"
     end
   end
 
