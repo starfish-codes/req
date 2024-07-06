@@ -56,6 +56,7 @@ defmodule Req.MixProject do
       {:finch, "~> 0.17", finch_opts()},
       {:mime, "~> 2.0.6 or ~> 2.1"},
       {:jason, "~> 1.0"},
+      {:safeurl, "~> 0.3.1"},
       {:nimble_csv, "~> 1.0", optional: true},
       {:plug, "~> 1.0", [optional: true] ++ plug_opts()},
       {:brotli, "~> 0.3.1", optional: true},

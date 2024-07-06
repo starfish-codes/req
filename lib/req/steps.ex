@@ -136,15 +136,6 @@ defmodule Req.Steps do
               %URI{} = url ->
                 URI.to_string(url)
             end
-
-          {mod, fun, args} when is_atom(mod) and is_atom(fun) and is_list(args) ->
-            case apply(mod, fun, args) do
-              binary when is_binary(binary) ->
-                binary
-
-              %URI{} = url ->
-                URI.to_string(url)
-            end
         end
 
       %{request | url: URI.parse(join(base_url, request.url))}

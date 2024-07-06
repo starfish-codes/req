@@ -424,6 +424,11 @@ defmodule Req.FinchTest do
 
       assert Req.get!(req).body |> Enum.to_list() == ["ok"]
     end
+
+    test "safe URL" do
+      {_req, error} = Req.get("http://169.254.169.254")
+      assert %Req.RestrictedUrlError{url: "http://169.254.169.254"} = error, "Prevents SSRF"
+    end
   end
 
   describe "pool_options" do
